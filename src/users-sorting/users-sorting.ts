@@ -13,19 +13,27 @@ import userDataFromFile from '../assets/github-user-data.json';
 })
 export class UsersSorting implements OnInit {
   displayedColumns: string[] = ['login', 'id', 'url', 'html_url', 'type'];
+
   userDataFromApi: User[];
+
+  public dataSource: any;
 
   constructor(private http: HttpClient) {
     this.http
       .get<User[]>('https://api.github.com/users')
-      .subscribe((res: User[]) => {
-        //console.log(res);
-        this.userDataFromApi = res;
-      });
+      .subscribe(
+        (result: User[]) => {
+          //console.log('const1: ' + result);
+          this.userDataFromApi = result;
+          //console.log('const2: ' + this.userDataFromApi);
+          this.dataSource = new MatTableDataSource(this.userDataFromApi);
+        }
+      );
   }
 
+
   // from api
-  dataSource = new MatTableDataSource(this.userDataFromApi);
+  //dataSource = new MatTableDataSource(this.userDataFromApi);
 
   // from const
   //dataSource = new MatTableDataSource(UserSortingConst.userDataFromConst);
@@ -36,10 +44,9 @@ export class UsersSorting implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    console.log("init: " + this.userDataFromApi)
     this.dataSource.sort = this.sort;
   }
-
-
 
   // OTHER
   public usersArr: User[];
