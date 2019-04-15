@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 
 import { User } from './users-sorting-model';
 
-@Injectable
+@Injectable()
 export class UsersSortingService {
   constructor(private http: HttpClient) { }
 
-  public getData() {
+  public getUserData() {
     return this.http.get<User[]>('https://api.github.com/users');
   }
 }
