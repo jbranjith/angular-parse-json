@@ -19,9 +19,9 @@ import { UsersSorting } from '../users-sorting/users-sorting';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule],
-  entryComponents: [UsersSorting],
-  declarations: [UsersSorting],
-  bootstrap: [UsersSorting],
+  entryComponents: [],
+  declarations: [UsersComponent, HelloComponent, UsersSorting],
+  bootstrap: [UsersComponent, UsersSorting],
   providers: []
 })
 export class AppModule { }
