@@ -16,7 +16,7 @@ export class UsersSorting implements OnInit {
 
   userDataFromApi: User[];
 
-  public dataSource: any;
+  //public dataSource: any;
 
   constructor(private http: HttpClient) {
     this.http
@@ -26,7 +26,7 @@ export class UsersSorting implements OnInit {
           //console.log('const1: ' + result);
           this.userDataFromApi = result;
           //console.log('const2: ' + this.userDataFromApi);
-          this.dataSource = new MatTableDataSource(this.userDataFromApi);
+          //this.dataSource = new MatTableDataSource(this.userDataFromApi);
         }
       );
   }
@@ -36,10 +36,10 @@ export class UsersSorting implements OnInit {
   //dataSource = new MatTableDataSource(this.userDataFromApi);
 
   // from const
-  //dataSource = new MatTableDataSource(UserSortingConst.userDataFromConst);
+  //public dataSource: any =  new MatTableDataSource(UserSortingConst.userDataFromConst);
 
   // from file
-  // dataSource = new MatTableDataSource(userDataFromFile);
+  public dataSource: any = new MatTableDataSource(userDataFromFile);
 
   @ViewChild(MatSort) sort: MatSort;
 
